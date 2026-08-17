@@ -1,0 +1,38 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; font-family: Arial, sans-serif; background: #f5f7fb; color: #172033; }
+a { color: inherit; text-decoration: none; }
+button, input, textarea, select { font: inherit; }
+button { cursor: pointer; }
+
+.container { max-width: 1180px; margin: 0 auto; padding: 24px; }
+.card { background: white; border: 1px solid #e4e7ec; border-radius: 14px; padding: 20px; box-shadow: 0 6px 24px rgba(0,0,0,.04); }
+.grid { display: grid; gap: 16px; }
+.grid-2 { grid-template-columns: 1fr 1fr; }
+.row { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.space { justify-content: space-between; }
+.btn { border: 0; border-radius: 9px; padding: 10px 14px; background: #1f6feb; color: white; font-weight: 600; }
+.btn.secondary { background: #eef2f7; color: #172033; }
+.btn.success { background: #15803d; }
+.btn.danger { background: #b42318; }
+.btn.warning { background: #b54708; }
+.input, .textarea, .select { width: 100%; padding: 11px 12px; border: 1px solid #ccd3dd; border-radius: 9px; background: white; }
+.textarea { min-height: 100px; resize: vertical; }
+.label { display: block; margin-bottom: 6px; font-weight: 600; }
+.muted { color: #667085; font-size: 14px; }
+.badge { display: inline-block; border-radius: 999px; padding: 5px 10px; background: #eef2f7; font-size: 13px; font-weight: 700; }
+.nav { background: #111827; color: white; }
+.nav-inner { max-width: 1180px; margin: auto; padding: 14px 24px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { padding: 12px 10px; border-bottom: 1px solid #e5e7eb; text-align: left; vertical-align: top; }
+.timeline { border-left: 2px solid #d0d5dd; margin-left: 8px; padding-left: 20px; }
+.timeline-item { margin-bottom: 18px; }
+.login-wrap { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+.login-card { width: 100%; max-width: 420px; }
+.error { background: #fff1f0; color: #b42318; border: 1px solid #fecdca; border-radius: 9px; padding: 10px; }
+.successbox { background: #ecfdf3; color: #027a48; border: 1px solid #abefc6; border-radius: 9px; padding: 10px; }
+h1,h2,h3 { margin-top: 0; }
+
+@media (max-width: 800px) {
+  .grid-2 { grid-template-columns: 1fr; }
+  .table { display: block; overflow-x: auto; }
+}

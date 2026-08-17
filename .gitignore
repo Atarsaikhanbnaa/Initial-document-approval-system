@@ -1,0 +1,15 @@
+node_modules/
+.next/
+out/
+
+.env
+.env.local
+.env.*
+
+uploads/
+
+*.log
+npm-debug.log*
+
+Thumbs.db
+.DS_Store
