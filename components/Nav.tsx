@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function Nav({
   name,
@@ -10,6 +10,7 @@ export default function Nav({
   position: string;
 }) {
   const router = useRouter();
+  const pathname = usePathname();
 
   async function logout() {
     await fetch("/api/auth/logout", {
@@ -23,46 +24,61 @@ export default function Nav({
   return (
     <nav className="nav">
       <div className="nav-inner">
-
-        {/* Системийн нэр + хэрэглэгч */}
-        <div>
-          <strong>Бичиг баримтын хяналт</strong>
-
-          <div
+        {/* Зүүн тал */}
+        <div className="row" style={{ gap: 14 }}>
+          <img
+            src="/logo.jpg"
+            alt="ББЦТС"
+            onClick={() => router.push("/dashboard")}
             style={{
-              fontSize: 12,
-              opacity: 0.8,
-              marginTop: 3,
+              width: 54,
+              height: 54,
+              objectFit: "contain",
+              cursor: "pointer",
             }}
-          >
-            {name} · {position}
+          />
+
+          <div>
+            <div
+              style={{
+                fontWeight: 800,
+                color: "#123A73",
+                fontSize: 18,
+              }}
+            >
+              БАРУУН БҮСИЙН ЦАХИЛГААН ТҮГЭЭХ СҮЛЖЭЭ ТӨХК
+            </div>
+
+            <div className="muted" style={{ fontSize: 13 }}>
+              Бичиг баримтын хяналт, баталгаажуулалтын систем
+            </div>
           </div>
         </div>
 
-        {/* Цэс */}
-        <div className="row">
+        {/* Баруун тал */}
+        <div className="row" style={{ gap: 12 }}>
+          {pathname !== "/dashboard" && (
+            <button
+              className="btn secondary"
+              onClick={() => router.back()}
+            >
+              ← Буцах
+            </button>
+          )}
 
-          <a href="/dashboard">
-            Dashboard
-          </a>
+          <div className="avatar">
+            {name.charAt(0).toUpperCase()}
+          </div>
 
-          <a href="/documents/upload">
-            Файл оруулах
-          </a>
+          <div>
+            <div style={{ fontWeight: 700 }}>{name}</div>
+            <div className="muted">{position}</div>
+          </div>
 
-          <a href="/admin/users">
-            Ажилтан
-          </a>
-
-          <button
-            className="btn secondary"
-            onClick={logout}
-          >
+          <button className="btn danger" onClick={logout}>
             Гарах
           </button>
-
         </div>
-
       </div>
     </nav>
   );
