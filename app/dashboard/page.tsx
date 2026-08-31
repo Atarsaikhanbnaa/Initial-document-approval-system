@@ -127,6 +127,7 @@ export default async function Dashboard() {
         <section className="dashboard-stats">
 
           <div className="stat-card stat-total">
+
             <div className="stat-icon">
               📄
             </div>
@@ -144,9 +145,11 @@ export default async function Dashboard() {
                 Системд бүртгэлтэй
               </div>
             </div>
+
           </div>
 
           <div className="stat-card stat-review">
+
             <div className="stat-icon">
               🔎
             </div>
@@ -164,9 +167,11 @@ export default async function Dashboard() {
                 Хянагдаж байгаа
               </div>
             </div>
+
           </div>
 
           <div className="stat-card stat-revision">
+
             <div className="stat-icon">
               ✏️
             </div>
@@ -184,9 +189,11 @@ export default async function Dashboard() {
                 Буцаагдсан
               </div>
             </div>
+
           </div>
 
           <div className="stat-card stat-approved">
+
             <div className="stat-icon">
               ✓
             </div>
@@ -204,6 +211,7 @@ export default async function Dashboard() {
                 Амжилттай баталсан
               </div>
             </div>
+
           </div>
 
         </section>
@@ -244,26 +252,11 @@ export default async function Dashboard() {
 
                 <thead>
                   <tr>
-                    <th>
-                      Бичиг баримт
-                    </th>
-
-                    <th>
-                      Оруулсан
-                    </th>
-
-                    <th>
-                      Хянагч
-                    </th>
-
-                    <th>
-                      Статус
-                    </th>
-
-                    <th>
-                      Version
-                    </th>
-
+                    <th>Бичиг баримт</th>
+                    <th>Оруулсан</th>
+                    <th>Хянагч</th>
+                    <th>Статус</th>
+                    <th>Version</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -369,6 +362,8 @@ export default async function Dashboard() {
 
           <aside className="dashboard-side-panel">
 
+            {/* MY INFO */}
+
             <div className="side-card">
 
               <div className="side-card-icon">
@@ -419,7 +414,18 @@ export default async function Dashboard() {
                 </strong>
               </div>
 
+              {/* PASSWORD BUTTON */}
+
+              <a
+                href="/profile/password"
+                className="change-password-link"
+              >
+                🔐 Нууц үг солих
+              </a>
+
             </div>
+
+            {/* QUICK ACTION */}
 
             <div className="side-card quick-actions">
 
@@ -433,6 +439,14 @@ export default async function Dashboard() {
                 </span>
 
                 Шинэ бичиг баримт
+              </a>
+
+              <a href="/profile/password">
+                <span>
+                  🔐
+                </span>
+
+                Нууц үг солих
               </a>
 
               {session.role === "ADMIN" && (

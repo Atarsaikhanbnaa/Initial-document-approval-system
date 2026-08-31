@@ -1289,3 +1289,26 @@ a {
     "Segoe UI",
     sans-serif;
 }
+.change-password-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 18px;
+  padding: 10px 12px;
+
+  border-radius: 9px;
+
+  background: #edf4ff;
+  color: #164b8e;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition: 0.15s;
+}
+
+.change-password-link:hover {
+  background: #dceaff;
+  color: #123a73;
+}
