@@ -1,11 +1,10 @@
 import { redirect } from "next/navigation";
-
 import { getSession } from "@/lib/auth";
 import { connectDB } from "@/lib/db";
-
 import Document from "@/models/Document";
 
 import Nav from "@/components/Nav";
+import DeleteDocumentButton from "@/components/DeleteDocumentButton";
 
 const statusText: Record<string, string> = {
   DRAFT: "Ноорог",
@@ -83,7 +82,6 @@ export default async function Dashboard() {
         {/* WELCOME */}
 
         <section className="dashboard-welcome">
-
           <div>
             <div className="dashboard-label">
               БИЧИГ БАРИМТЫН ХЯНАЛТ
@@ -119,7 +117,6 @@ export default async function Dashboard() {
             )}
 
           </div>
-
         </section>
 
         {/* STATISTICS */}
@@ -127,7 +124,6 @@ export default async function Dashboard() {
         <section className="dashboard-stats">
 
           <div className="stat-card stat-total">
-
             <div className="stat-icon">
               📄
             </div>
@@ -145,11 +141,9 @@ export default async function Dashboard() {
                 Системд бүртгэлтэй
               </div>
             </div>
-
           </div>
 
           <div className="stat-card stat-review">
-
             <div className="stat-icon">
               🔎
             </div>
@@ -167,11 +161,9 @@ export default async function Dashboard() {
                 Хянагдаж байгаа
               </div>
             </div>
-
           </div>
 
           <div className="stat-card stat-revision">
-
             <div className="stat-icon">
               ✏️
             </div>
@@ -189,11 +181,9 @@ export default async function Dashboard() {
                 Буцаагдсан
               </div>
             </div>
-
           </div>
 
           <div className="stat-card stat-approved">
-
             <div className="stat-icon">
               ✓
             </div>
@@ -211,7 +201,6 @@ export default async function Dashboard() {
                 Амжилттай баталсан
               </div>
             </div>
-
           </div>
 
         </section>
@@ -257,7 +246,7 @@ export default async function Dashboard() {
                     <th>Хянагч</th>
                     <th>Статус</th>
                     <th>Version</th>
-                    <th></th>
+                    <th>Үйлдэл</th>
                   </tr>
                 </thead>
 
@@ -272,7 +261,6 @@ export default async function Dashboard() {
                       >
 
                         <td>
-
                           <div className="document-cell">
 
                             <div className="document-icon">
@@ -290,7 +278,6 @@ export default async function Dashboard() {
                             </div>
 
                           </div>
-
                         </td>
 
                         <td>
@@ -298,26 +285,21 @@ export default async function Dashboard() {
                         </td>
 
                         <td>
-                          {doc.currentReviewerName ||
-                            "-"}
+                          {doc.currentReviewerName || "-"}
                         </td>
 
                         <td>
-
                           <span
                             className={`dashboard-status ${
                               statusClass[
                                 doc.status
-                              ] ||
-                              "status-gray"
+                              ] || "status-gray"
                             }`}
                           >
                             {statusText[
                               doc.status
-                            ] ||
-                              doc.status}
+                            ] || doc.status}
                           </span>
-
                         </td>
 
                         <td>
@@ -327,12 +309,32 @@ export default async function Dashboard() {
                         </td>
 
                         <td>
-                          <a
-                            className="view-document-btn"
-                            href={`/documents/${doc._id}`}
+                          <div
+                            style={{
+                              display: "flex",
+                              alignItems: "center",
+                              gap: "8px",
+                              flexWrap: "wrap",
+                            }}
                           >
-                            Нээх
-                          </a>
+                            <a
+                              className="view-document-btn"
+                              href={`/documents/${doc._id}`}
+                            >
+                              Нээх
+                            </a>
+
+                            {(
+                              session.role === "ADMIN" ||
+                              doc.uploadedBy?.toString() ===
+                                session.userId
+                            ) && (
+                              <DeleteDocumentButton
+                                documentId={doc._id.toString()}
+                                title={doc.title}
+                              />
+                            )}
+                          </div>
                         </td>
 
                       </tr>
@@ -355,7 +357,6 @@ export default async function Dashboard() {
               </table>
 
             </div>
-
           </div>
 
           {/* SIDE PANEL */}
@@ -414,8 +415,6 @@ export default async function Dashboard() {
                 </strong>
               </div>
 
-              {/* PASSWORD BUTTON */}
-
               <a
                 href="/profile/password"
                 className="change-password-link"
@@ -434,27 +433,18 @@ export default async function Dashboard() {
               </h3>
 
               <a href="/documents/upload">
-                <span>
-                  ＋
-                </span>
-
+                <span>＋</span>
                 Шинэ бичиг баримт
               </a>
 
               <a href="/profile/password">
-                <span>
-                  🔐
-                </span>
-
+                <span>🔐</span>
                 Нууц үг солих
               </a>
 
               {session.role === "ADMIN" && (
                 <a href="/admin/users">
-                  <span>
-                    👥
-                  </span>
-
+                  <span>👥</span>
                   Ажилтан нэмэх
                 </a>
               )}

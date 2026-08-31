@@ -1312,3 +1312,36 @@ a {
   background: #dceaff;
   color: #123a73;
 }
+/* =========================
+   DOCUMENT DELETE BUTTON
+========================= */
+
+.delete-document-btn {
+  border: 1px solid #fecaca;
+
+  background: #fff1f2;
+  color: #dc2626;
+
+  padding: 7px 11px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: 0.15s;
+}
+
+.delete-document-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+}
+
+.delete-document-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
