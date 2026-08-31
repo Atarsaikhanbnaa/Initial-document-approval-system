@@ -1345,3 +1345,31 @@ a {
   opacity: 0.55;
   cursor: not-allowed;
 }
+/* =========================
+   USER DELETE
+========================= */
+
+.delete-user-btn {
+  border: 1px solid #fecaca;
+
+  background: #fff1f2;
+  color: #dc2626;
+
+  padding: 10px 14px;
+
+  border-radius: 9px;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  cursor: pointer;
+
+  white-space: nowrap;
+
+  transition: 0.15s;
+}
+
+.delete-user-btn:hover {
+  background: #fee2e2;
+  border-color: #fca5a5;
+}
